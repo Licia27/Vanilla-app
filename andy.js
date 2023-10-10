@@ -32,3 +32,34 @@ function searchCity(city) {
 
 
 }
+
+function handlesubmit(event) {
+    event.preventDefault();
+    let city = document.querySelector("#city-input").value;
+    searchCity(city);
+
+}
+
+function searchLocation(position) {
+    let apiKey = "5ca713de3ca14df8f6e8c1dfa66426e9";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function getCurrentLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let dateElement = document.querySelector("#date");
+let currentTime = new date();
+dateElement.innerHTML = formatDate(currentTime);
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handlesubmit);
+
+let currentLocationButton = document.querySelector("current-location-button");
+currentLocationButton.addEventListener("click",getCurrentLocation);
+
+searchCity("Northriding");
