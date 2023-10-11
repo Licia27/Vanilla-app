@@ -65,13 +65,13 @@ function convertToCelsius(event) {
 }
 
 let dateElement = document.querySelector("#date");
-let currentTime = new date();
+let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handlesubmit);
 
-let currentLocationButton = document.querySelector("current-location-button");
+let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click",getCurrentLocation);
 
-searchCity("Northriding");
+searchCity("Randburg");
